@@ -17,7 +17,7 @@ const connection = async () => {
 
 
    
-    await pool.query(`ALTER TABLE booth_data ADD UNIQUE KEY unique_year_booth (year, booth_number)`);
+   
 
     console.log("database connected");
 

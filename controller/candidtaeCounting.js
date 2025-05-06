@@ -12,6 +12,10 @@ export const addCandiCountController = async (req, res) => {
     }
 
     const [candidates] = await pool.query(`SELECT id, name FROM candidate`);
+
+if(candidates.length === 0) {
+  return res.status(400).json({ message: "No candidates found" });
+}
     const candidateMap = {};
 
     candidates.forEach((item) => {
@@ -27,10 +31,11 @@ export const addCandiCountController = async (req, res) => {
 
         for (let key in row) {
           const name = key.trim().toLowerCase();
+          const year = row.year
           const cid = candidateMap[name];
           const count = parseInt(row[key], 10);
           if (cid && boothNumber && !isNaN(count)) {
-            results.push([cid, boothNumber, count]);
+            results.push([year,cid, boothNumber, count]);
           }
         }
       })

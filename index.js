@@ -4,6 +4,7 @@ import { connection, pool } from "./database/db.js";
 import createAllTabels from "./tabels/Table.js";
 import { candidateCountRoute } from "./routes/CandidateCount.js";
 import { boothRoute } from "./routes/Booth.js";
+import { candidateRoute } from "./routes/candidate.js";
 
 const app =express();
 
@@ -16,7 +17,8 @@ app.get("/", (req,res)=>{
 })
 
 app.use("/candidateCount",candidateCountRoute);
-app.use("/booth", boothRoute)
+app.use("/booth", boothRoute);
+app.use("/candidate", candidateRoute)
 
 
 try {
