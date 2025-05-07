@@ -19,8 +19,8 @@ FOREIGN KEY (cid) REFERENCES candidate(id)
 
 const boothData = `CREATE TABLE IF NOT EXISTS booth_data(
 id INT AUTO_INCREMENT PRIMARY KEY,
-year INT NOT NULL UNIQUE,
-booth_number INT NOT NULL UNIQUE,
+year INT NOT NULL ,
+booth_number INT NOT NULL ,
 name VARCHAR(255),
 zp VARCHAR(255),
 village VARCHAR(255),
@@ -32,12 +32,11 @@ femaleVotes INT
 
 const createTable = async (table, query) => {
   try {
-
     await pool.query(query);
 
     console.log(`${table} table created`);
   } catch (error) {
-    console.log(error)
+    console.log(error);
   }
 };
 
@@ -51,4 +50,15 @@ const createAllTabels = async () => {
   }
 };
 
-export default createAllTabels;
+const alterTables = async () => {
+  try {
+    await pool.query(
+      `ALTER TABLE booth_data ADD UNIQUE KEY unique_year_booth (year, booth_number)`
+    );
+    console.log("alter tabels");
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+export { createAllTabels, alterTables };

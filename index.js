@@ -1,7 +1,7 @@
 import express from "express";
 import cors from "cors";
 import { connection, pool } from "./database/db.js";
-import createAllTabels from "./tabels/Table.js";
+import {alterTables, createAllTabels} from "./tabels/Table.js";
 import { candidateCountRoute } from "./routes/CandidateCount.js";
 import { boothRoute } from "./routes/Booth.js";
 import { candidateRoute } from "./routes/candidate.js";
@@ -25,7 +25,7 @@ try {
 
     await connection();
     await createAllTabels();
-    
+    await alterTables()
 
 
     app.listen(8080, ()=>{
