@@ -5,6 +5,7 @@ import {alterTables, createAllTabels} from "./tabels/Table.js";
 import { candidateCountRoute } from "./routes/CandidateCount.js";
 import { boothRoute } from "./routes/Booth.js";
 import { candidateRoute } from "./routes/candidate.js";
+import { filterRoute } from "./routes/filter.js";
 
 const app =express();
 
@@ -20,7 +21,7 @@ app.use("/candidateCount",candidateCountRoute);
 app.use("/booth", boothRoute);
 app.use("/candidate", candidateRoute)
 
-
+app.use("/filter",filterRoute)
 try {
 
     await connection();

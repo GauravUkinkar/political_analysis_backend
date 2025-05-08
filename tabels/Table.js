@@ -30,6 +30,22 @@ maleVotes INT,
 femaleVotes INT
 )`;
 
+const filters = `CREATE TABLE IF NOT EXISTS filters(
+
+id INT AUTO_INCREMENT PRIMARY KEY,
+filterName VARCHAR(255) NOT NULL,
+description VARCHAR(255),
+boothNumber JSON,
+boothName JSON,
+zonalPartition JSON,
+village JSON,
+totalVotes JSON,
+totalVotesReceived JSON,
+maleVoters JSON,
+femaleVoters JSON,
+pin VARCHAR(255) DEFAULT false
+)`;
+
 const createTable = async (table, query) => {
   try {
     await pool.query(query);
@@ -45,6 +61,7 @@ const createAllTabels = async () => {
     await createTable("candidate", candidate);
     await createTable("candidateCounting", candidateCounting);
     await createTable("booth_data", boothData);
+    await createTable("filters", filters);
   } catch (error) {
     console.log(error);
   }
