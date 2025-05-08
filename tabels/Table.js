@@ -52,9 +52,9 @@ const createAllTabels = async () => {
 
 const alterTables = async () => {
   try {
-    await pool.query(
-      `ALTER TABLE booth_data ADD UNIQUE KEY unique_year_booth (year, booth_number)`
-    );
+    // await pool.query(
+    //   `ALTER TABLE booth_data ADD UNIQUE KEY unique_year_booth (year, booth_number)`
+    // );
     console.log("alter tabels");
   } catch (error) {
     console.log(error);
