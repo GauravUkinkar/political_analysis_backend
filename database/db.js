@@ -10,13 +10,8 @@ const pool = mysql.createPool({
   password: process.env.PASSWORD,
   database: process.env.DATABASE,
 });
-// const pool = mysql.createPool({
-//   host: "145.223.88.194",
-//   port:"3306",
-//   user: "developer",
-//   password: "Pan@Server@2025",
-//   database: "political_stat",
-// });
+
+
 
 const connection = async () => {
   try {
