@@ -3,12 +3,19 @@ import dotenv from "dotenv";
 
 dotenv.config();
 
+// const pool = mysql.createPool({
+//   host: process.env.DB_HOST,
+//   port:process.env.DB_PORT,
+//   user: process.env.DB_USER,
+//   password: process.env.PASSWORD,
+//   database: process.env.DATABASE,
+// });
 const pool = mysql.createPool({
-  host: process.env.HOST,
-  port:process.env.PORT,
-  user: process.env.USER,
-  password: process.env.PASSWORD,
-  database: process.env.DATABASE,
+  host: "145.223.88.194",
+  port:"3306",
+  user: "developer",
+  password: "Pan@Server@2025",
+  database: "political_stat",
 });
 
 const connection = async () => {
