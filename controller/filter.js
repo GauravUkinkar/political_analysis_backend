@@ -77,3 +77,41 @@ export const getfilterById = async (req, res) => {
     });
   }
 };
+
+// change pin status
+
+export const changeFilterPin = async (req, res) => {
+  try {
+    const { id } = req.query;
+    
+   pool.query(`UPDATE filters SET pin=? WHERE id=?`, [
+      true,
+      id,
+    ]);
+
+    return res.status(200).json({
+      message:"success"
+    })
+  } catch (error) {
+    return res.status(500).json({
+      message:error.message
+    })
+  }
+};
+
+// get all pin filter
+
+
+export const getAllPinFilter = async (req,res)=>{
+  try {
+    const [data] = await pool.query(`SELECT * FROM filters WHERE pin=?`,[true]);
+    return res.status(200).json({
+      data,
+      message:"sucesss"
+    })
+  } catch (error) {
+    return res.status(500).json({
+      message:error.message
+    })
+  }
+}
